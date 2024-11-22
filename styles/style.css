@@ -18,7 +18,6 @@ ol {
     list-style: none;
 }
 img {
-  width: 100%;
   overflow-x: hidden;
 }
 article,
@@ -31,6 +30,7 @@ section {
 }
 body {
   text-align: center;
+  min-high: 100vh;
 }
 article,
 aside,
@@ -44,7 +44,6 @@ header,
 nav,
 section {
   width: 100%;
-  position: relative;
   height: auto;
   margin: 0px;
   padding: 0px;
@@ -55,18 +54,23 @@ h1 {
 }
 /*  NORMALIZED CSS OR RESETT  */
 .navbar {
-  height: 100px;
-  position: inherit;
+    position: relative;
+  width: 100%;
   background-color: #fff;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.24);
+}
+.navbar #check {
+    display: none;
 }
 .navbar .logo {
-width: 300px;
-height: 100px;
-margin-left: 50px;
-}
+   width: 300px;
+   height: 100px;
+   margin-left: 30px;
+   }
 .logo img {
 width: 100%;
 height: 100%;
@@ -77,68 +81,72 @@ object-fit: contain;
 }
 .nav-menu li {
  display: inline-block;
+ padding: 0px 25px;
 }
 .nav-menu li a {
-font-size: 18px;
  color: orangered;
  text-transform: uppercase;
  font-weight: 700px;
- padding: 7px 13px;
+ padding-bottom: 3px;
 }
-.nav-menu li a:hover {
-   color: #1d3052;
-   transition: all .3s ease;
+a.active, .nav-menu li a:hover {
+  border-bottom: 3px solid #1d3052;
+  transition: all .3s;
 }
-.nav-menu li:nth-of-type(6){
+.nav-menu .anchor-nav{
   background: brown;
   color: white;
-  padding: 10px  5px;
+  padding: 5px  15px;
   border-radius: 5px;
 }
-.nav-menu li:nth-of-type(6):hover {
+.nav-menu .anchor-nav:hover {
    background: #132743;
+   color: white;
 }
-.nav-menu li a.anchor-nav {
-  color: white;
+.check-btn {
+    font-size: 2em;
+    color: brown;
+    cursor: pointer;
+    display: none;
 }
+
 /*  MEDIA QUERIES HEADER  */
 @media (max-width: 480px) {
-  body {
-    overflow-x: hidden;
+     body {
+        overflow-x: hidden;
+     }
+     .check-btn {
+        display: block;
+        position: absolute;
+        top: 1em;
+        left: 0.5em;
+     }
+     .navbar {
+        flex-direction: column;
+     }
+     .nav-menu li {
+        display: block;
+        padding: 1em;
+     }
+     #check {
+        opacity: 0;
+     }
+     .nav-menu {
+        opacity: 0;
+        width: 100%;
+        background-color: turquoise;
+        height: 100vh;
+        position: absolute;
+        top: 100px;
+        left: 0;
+        z-index: 12;
+        transition: .4s ease-in-out;
+     }
+     .navbar #check:checked ~ .nav-menu {
+        opacity: 1;
+     }
   }
-  header {
-    padding-bottom: 1em;
-  }
-  header .navbar {
-    display: flex;
-    flex-direction: column;
-  }
-  header .navbar {
-    width: 100%;
-    height: auto;
-    margin: 0 auto;
-  }
-  .navbar .logo {
-     width: 100%;
-     height: auto;
-     text-align: center;
-     margin: 0.1em auto;
-  }
-  .nav-menu li {
-     width: 100%;
-     height: auto;
-     flex-direction: column;
-     margin-bottom: .5em;
-  }
-  .nav-menu li:nth-of-type(6) {
-      padding: .3em 0;
-      display: inline;
-      margin: 0;
-  }
-  .nav-menu li a.anchor-menu {
-    margin-bottom: 1em auto;
-  }
-}
+
 /*  HERO  SCHIT  */
 #hero {
   width: 100%;
